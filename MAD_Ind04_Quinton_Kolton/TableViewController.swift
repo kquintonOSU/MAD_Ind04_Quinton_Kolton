@@ -17,6 +17,7 @@ class TableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
 
     // MARK: - Table view data source
@@ -49,7 +50,12 @@ class TableViewController: UITableViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        parseStates()
+        self.showSpinner()
+        Timer.scheduledTimer(withTimeInterval: 3.0, repeats: false) {
+            (t) in
+            self.parseStates()
+        }
+        self.removeSpinner()
     }
 
     /*
